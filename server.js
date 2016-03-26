@@ -8,11 +8,13 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expressLayouts = require('express-ejs-layouts');
 var app = express();
+var http = require('http').Server(app);
 var mongoose = require('mongoose');
 var db = mongoose.connection;
 var session        = require('express-session');
 var cookieParser   = require('cookie-parser');
 var passport       = require('passport');
+var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
 // ===============================================================================
@@ -62,7 +64,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
 
+  socket.on('change event', function(value) {
+    io.emit('event change', value);
+  });
+
+});
 // ===============================================================================
 // Routing / Contorllers
 // ===============================================================================
@@ -73,7 +82,7 @@ require('./routes.js')(app, passport);
 // ===============================================================================
 db.once('open', function() {
   console.log('Connected To Mongoose')
-  app.listen(port, function() {
+  http.listen(port, function() {
     console.log('Listening....')
   })
 })
