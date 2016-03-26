@@ -6,19 +6,11 @@ module.exports = function(app,passport) {
   app.use('/coding', codesessionsController);
 
   app.get('/', function(req, res) {
-   if(res.locals.login) {
-     res.redirect('/home')
-   } else {
-     res.redirect('/login')
-   }
+    res.sendFile(__dirname + '/public/home.html');
   });
 
   app.get('/home', function(req, res) {
-   if(res.locals.login) {
-     res.render('index.ejs', {loggedIn: res.locals.login})
-   } else {
-     res.redirect('/login')
-   }
+    res.sendFile(__dirname + '/public/home.html');
   });
 
   app.get('/login', function(req, res) {
