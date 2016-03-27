@@ -1,34 +1,21 @@
-window.onload = function() {
-  var socket = io();
+(function() {
 
-  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-    lineNumbers: true,
-    tabSize: 2,
-    mode: "ruby",
-    theme: "monokai"
-  });
+  var app = angular.module('partnerCode', ['ngRoute','codemirror-directive']);
 
-  // on and off handler like in jQuery
-  // editor.on('change', function(obj, change){
+  //sets up angular routing
+  app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode({ enabled: true });
+    $routeProvider.
+        when('/', {
+          templateUrl: '/views/pages/home.html',
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+    }]);
 
-  // var myEditor = document.getElementById("code");
+  app.config(['$compileProvider', function ($compileProvider) {
+      $compileProvider.debugInfoEnabled(false);
+  }]);
 
-  document.onkeyup = function(e) {
-    value = editor.getDoc().getValue();
-    cursor = editor.getDoc().getCursor();
-    socket.emit('change event', [value, cursor]);
-
-  };
-
-
-  // });
-  socket.on('event change', function(doc){
-    editor.getDoc().setValue(doc[0]);
-    editor.getDoc().setCursor(doc[1])
-  });
-
-
-
-  //https://codemirror.net/doc/manual.html#setOption
-  // myCodeMirror.setOption("mode", "javascript")
-};
+})()

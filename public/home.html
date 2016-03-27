@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="partnerCode">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +7,25 @@
     <link rel="stylesheet" href="css/index.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/lib/theme/theme-min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/lib/codemirror.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js" type="application/javascript"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="js/lib/codemirror.js" charset="utf-8"></script>
     <script src="js/lib/mode/javascript/javascript.js" charset="utf-8"></script>
     <script src="js/lib/mode/ruby/ruby.js" charset="utf-8"></script>
+    <script src="js/controllers/codemirrorController.js" charset="utf-8"></script>
+    <script src="js/models/codemirror.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
+    <base href="/">
   </head>
   <body>
-    <form action="" >
-      <textarea name="name" id="code"></textarea>
-    </form>
+    <nav>
+      <ul>
+        <li><a href="" class="button">Test</a></li>
+        <li><a href="" class="button">Test</a></li>
+      </ul>
+    </nav>
+    <div ng-view class="body-container">
+  </div>
   </body>
 </html>
