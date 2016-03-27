@@ -1,6 +1,6 @@
 var app = angular.module("codemirrorController", []);
 
-app.controller("codemirrorController", ["$http", function($http) {
+  app.controller("codemirrorController", ["$http", function($http) {
 
   var self = this;
 
@@ -18,13 +18,21 @@ app.controller("codemirrorController", ["$http", function($http) {
     // editor.on('change', function(obj, change){
 
     // var myEditor = document.getElementById("code");
+    editor.on('inputRead', function(obj){
+      changes();
+    });
 
-    document.onkeyup = function(e) {
+    editor.on('change', function(obj, change) {
+      if (change.origin == "+delete") {
+        changes();
+      };
+    });
+
+    var changes = function() {
       value = editor.getDoc().getValue();
       cursor = editor.getDoc().getCursor();
       socket.emit('change event', [value, cursor]);
-
-    };
+    }
 
 
     // });
