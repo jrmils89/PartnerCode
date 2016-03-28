@@ -2,7 +2,7 @@
 
   var app = angular.module('partnerCode', ['ngRoute','ngCookies','nav-directive','codemirror-directive','signup-directive','login-directive']);
 
-  app.controller('appController',['$cookies','$location','$scope', function($cookies,$location,$scope) {
+  app.controller('appController',['$cookies','$location','$scope','$http', function($cookies,$location,$scope,$http) {
 
     var self = this;
     var cookies = $cookies.getAll();
@@ -12,21 +12,39 @@
     };
 
     this.user = {};
+    this.loggedIn = false;
 
-    this.hello = "HI"
+    $http({
+      method: "GET",
+      url: "/api/v1/users/checkLogin"
+    }).then(
+      function(response) {
+        if (response.data != false) {
+          self.user = response.data;
+          self.loggedIn = true;
+        };
+    }, function(error) {
+      console.log(error);
+    });
+
 
     $scope.$on('signup', function(eventObj, data) {
       self.user = data;
-      console.log(self.user);
+      self.loggedIn = true;
     });
 
     $scope.$on('login', function(eventObj, data) {
       self.user = data;
-      console.log(self.user);
+      self.loggedIn = true;
+    });
+
+    $scope.$on('logout', function(eventObj, data) {
+      self.user = {};
+      self.loggedIn = false;
     });
 
   }]);
-  
+
   //sets up angular routing
   app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode({ enabled: true });

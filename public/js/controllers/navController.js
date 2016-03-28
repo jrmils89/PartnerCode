@@ -84,7 +84,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
       url: "/logout",
     }).then(
       function(response) {
-        $scope.$emit('login', response.data);
+        $scope.$emit('logout', response.data);
         self.user = {};
         self.loggedIn = false;
       },

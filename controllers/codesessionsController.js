@@ -29,7 +29,6 @@ router.get('/:id', function(req, res) {
 
 
 router.put('/:id', function(req, res) {
-	console.log(req.body);
 	Codesession.findByIdAndUpdate(req.params.id, { $set: req.body}, function(err, data) {
 		res.json(data)
 	});
