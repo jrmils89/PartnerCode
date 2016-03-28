@@ -19,8 +19,18 @@ body {
   min-height: 100%;
 }
 
+.body-container {
+  margin-top: 4vh;
+}
+
 nav {
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  height: 4vh;
+  background: white;
 }
 nav > ul {
   list-style: none;
@@ -115,8 +125,40 @@ form > ul > li {
   list-style: none;
 }
 
+.intro-container {
+  /*This height should subtract -#vh of however big the font size of a.button is */
+  height: 150vh;
+  padding-top: 60vh;
+  width: 100%;
+  float: left;
+  animation: 0.5s fade-in;
+}
+
+.background-red {
+  background-color: #CE5D5D;
+}
+
+.background-white {
+  background-color: white;
+}
+
+
+.hidden {
+  width: 100%;
+  float: left;
+  display: block;
+  background-color: #CE5D5D;
+  animation: 0.7s fade-out forwards;
+}
+
 @keyframes fade-in {
   0% {opacity: 0}
   10% {opacity: .5}
   100% {opacity: 1}
+}
+
+@keyframes fade-out {
+  0% {opacity: 1; height: 50vh}
+  10% {opacity: .8}
+  100% {opacity: 0; display: none; height: 0;}
 }

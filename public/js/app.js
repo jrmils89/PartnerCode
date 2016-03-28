@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module('partnerCode', ['ngRoute','ngCookies','nav-directive','codemirror-directive','signup-directive','login-directive']);
+  var app = angular.module('partnerCode', ['ngRoute','ngCookies','nav-directive','codemirror-directive','signup-directive','login-directive','homeController']);
 
   app.controller('appController',['$cookies','$location','$scope','$http', function($cookies,$location,$scope,$http) {
 

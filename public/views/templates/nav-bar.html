@@ -2,9 +2,9 @@
   <ul>
     <li><a href="/" class="button">Home</a></li>
     <li><a href="" class="button" ng-click="navCtrl.showSession()">Create New Session</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.showSignup()" ng-show="appCtrl.loggedIn === false">Signup</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.showLogin()" ng-show="appCtrl.loggedIn === false">Login</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.logoutUser()" ng-show="appCtrl.loggedIn === true">Logout</a></li>
+    <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showSignup()" >Signup</a></li>
+    <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showLogin()" >Login</a></li>
+    <li ng-if="appCtrl.loggedIn === true"><a href="" class="button" ng-click="navCtrl.logoutUser()" >Logout</a></li>
   </ul>
 </nav>
 <div class="form-overlay"  ng-show="navCtrl.show === true">
