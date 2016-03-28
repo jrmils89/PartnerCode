@@ -65,7 +65,6 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
           function(error) {
             console.log(error);
           })
-
         };
 
         this.interval = window.setInterval(this.callback, 5000)
