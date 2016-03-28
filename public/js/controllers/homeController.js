@@ -17,6 +17,7 @@ app.controller("homeController", [function() {
       var lastEl = document.getElementsByClassName("hidden").length - 1;
       if (lastEl != -1) {
         document.getElementsByClassName('hidden')[lastEl].className = document.getElementsByClassName('hidden')[lastEl].className.replace(/(hidden)/gi,'intro-container');
+        window.scroll(0,380);
       }
     }
   })
