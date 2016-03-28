@@ -8,6 +8,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   this.show = false;
   this.login = false;
   this.signup = false;
+  this.loggedIn = false;
 
   this.showSession = function() {
     self.show = !self.show
@@ -32,7 +33,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
     }).then(
       function(response){
         self.codesession = {};
-        self.click();
+        self.showSession();
         $location.path('/codesession/'+response.data._id);
       },
       function(error){
@@ -42,11 +43,55 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   };
 
   this.signupUser = function(formdata) {
-    consol.log(formdata)
+    $http({
+      method: "POST",
+      url: "/signup",
+      data: formdata
+    }).then(
+      function(response) {
+        $scope.$emit('signup', response.data);
+        this.user = {};
+        self.showSignup();
+        self.loggedIn = true;
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
   };
 
   this.loginUser = function(formdata) {
-    consol.log(formdata)
+    $http({
+      method: "POST",
+      url: "/login",
+      data: formdata
+    }).then(
+      function(response) {
+        $scope.$emit('login', response.data);
+        this.user = {};
+        self.showLogin();
+        self.loggedIn = true;
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
+  };
+
+  this.logoutUser = function() {
+    $http({
+      method: "GET",
+      url: "/logout",
+    }).then(
+      function(response) {
+        $scope.$emit('login', response.data);
+        this.user = {};
+        self.loggedIn = false;
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
   };
 
 }]);

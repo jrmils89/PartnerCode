@@ -4,7 +4,7 @@ module.exports = function(app,passport) {
   var codesessionsController     = require('./controllers/codesessionsController');
   var staticController     = require('./controllers/staticController');
 
-  app.use('/users', usersController);
+  app.use('/api/v1/users', usersController);
   app.use('/api/v1/coding', codesessionsController);
   app.use('/', staticController);
 
@@ -18,14 +18,6 @@ module.exports = function(app,passport) {
 
   app.get('/home', function(req, res) {
     res.sendFile(__dirname + '/public/home.html');
-  });
-
-  app.get('/login', function(req, res) {
-    res.json(res.locals.login);
-  });
-
-  app.get('/signup', function(req, res) {
-    res.json(res.locals.login);
   });
 
   app.get('/logout', function(req, res) {

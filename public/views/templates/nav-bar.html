@@ -2,8 +2,9 @@
   <ul>
     <li><a href="/" class="button">Home</a></li>
     <li><a href="" class="button" ng-click="navCtrl.showSession()">Create New Session</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.showSignup()">Signup</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.showLogin()">Login</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showSignup()" ng-show="navCtrl.loggedIn === false">Signup</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showLogin()" ng-show="navCtrl.loggedIn === false">Login</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.logoutUser()" ng-show="navCtrl.loggedIn === true">Logout</a></li>
   </ul>
 </nav>
 <div class="form-overlay"  ng-show="navCtrl.show === true">
@@ -24,6 +25,5 @@
     </ul>
   </form>
 </div>
-
 <signup-directive></signup-directive>
 <login-directive></login-directive>
