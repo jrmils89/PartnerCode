@@ -111,6 +111,10 @@ form > input {
   color: #CE5D5D;
 }
 
+form > ul > li {
+  list-style: none;
+}
+
 @keyframes fade-in {
   0% {opacity: 0}
   10% {opacity: .5}

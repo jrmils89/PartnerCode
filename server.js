@@ -14,6 +14,8 @@ var cookieParser   = require('cookie-parser');
 var passport       = require('passport');
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/partnercode';
+
 
 // ===============================================================================
 // Setup Dat Port Info, like Columbus
@@ -22,7 +24,7 @@ var port = process.env.PORT || 3000;
 // ===============================================================================
 // Middlewares
 // ===============================================================================
-mongoose.connect('mongodb://localhost:27017/partnercode');
+mongoose.connect(mongoUri);
 
 // Add ability to render static files
 app.use(express.static('public'));
