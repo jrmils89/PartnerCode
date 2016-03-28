@@ -22,7 +22,9 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
           theme: data.theme.toLowerCase()
         });
 
-        editor.getDoc().setValue(intialData);
+        if (intialData) {
+          editor.getDoc().setValue(intialData);
+        };
         // on and off handler like in jQuery
         // editor.on('change', function(obj, change){
 
