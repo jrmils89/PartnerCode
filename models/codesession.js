@@ -8,6 +8,7 @@ var codesessionSchema = new Schema({
   dateUpdated: {type: Date, default: Date.now()},
   name: {type: String},
   language: {type: String},
+  theme: {type: String},
   typedData: {type: String}
 })
 

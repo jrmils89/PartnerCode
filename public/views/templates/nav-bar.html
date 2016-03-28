@@ -1,0 +1,24 @@
+<nav>
+  <ul>
+    <li><a href="/" class="button">Home</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.click()">Create New Session</a></li>
+  </ul>
+</nav>
+<div class="form-overlay"  ng-show="navCtrl.show === true">
+  <form class="create-session" action="">
+    <input type="text" name="name" placeholder="Name" ng-model="navCtrl.codesession.name"></br>
+    <input list="languages" name="myLanguage" placeholder="Choose Language" ng-model="navCtrl.codesession.language"/></br>
+    <datalist id="languages" >
+      <option value="Javascript">
+      <option value="Ruby">
+    </datalist>
+    <input list="themes" name="myTheme" placeholder="Choose Theme" ng-model="navCtrl.codesession.theme"/></br>
+    <datalist id="themes">
+      <option value="Monokai">
+    </datalist>
+    <ul>
+      <li><a href="/" class="form-button" ng-click="navCtrl.submit(navCtrl.codesession)">Submit</a></li>
+      <li><a href="/" class="form-button" ng-click="navCtrl.click()">Cancel</a></li>
+    </ul>
+  </form>
+</div>

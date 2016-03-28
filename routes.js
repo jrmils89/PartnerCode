@@ -2,10 +2,17 @@ module.exports = function(app,passport) {
 
   var usersController     = require('./controllers/usersController');
   var codesessionsController     = require('./controllers/codesessionsController');
+  var staticController     = require('./controllers/staticController');
+
   app.use('/users', usersController);
-  app.use('/coding', codesessionsController);
+  app.use('/api/v1/coding', codesessionsController);
+  app.use('/', staticController);
 
   app.get('/', function(req, res) {
+    res.clearCookie('redirectPartnerCode');
+    var url = req.session.valid || 'null';
+    res.cookie('redirectPartnerCode', url);
+    req.session.valid = null;
     res.sendFile(__dirname + '/public/home.html');
   });
 

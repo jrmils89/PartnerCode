@@ -12,8 +12,27 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   var codeSession = new Codesession(req.body);
   codeSession.save(function(err,data) {
-    res.json(data);
+    if (err) {
+			res.json(err);
+		} else {
+			res.json(data);
+		};
   })
+})
+
+
+router.get('/:id', function(req, res) {
+	Codesession.findById(req.params.id, function(err, data) {
+		res.json(data)
+	});
+})
+
+
+router.put('/:id', function(req, res) {
+	console.log(req.body);
+	Codesession.findByIdAndUpdate(req.params.id, { $set: req.body}, function(err, data) {
+		res.json(data)
+	});
 })
 
 // SHOW
