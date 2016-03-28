@@ -6,12 +6,23 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   var self = this;
 
   this.show = false;
+  this.login = false;
+  this.signup = false;
 
-  this.click = function() {
+  this.showSession = function() {
     self.show = !self.show
   }
 
+  this.showLogin = function() {
+    self.login = !self.login
+  }
+
+  this.showSignup = function() {
+    self.signup = !self.signup
+  }
+
   this.codesession = {};
+  this.user = {};
 
   this.submit = function(formdata) {
     $http({
@@ -28,6 +39,14 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
         console.log(error)
       }
     )
-  }
+  };
+
+  this.signupUser = function(formdata) {
+    consol.log(formdata)
+  };
+
+  this.loginUser = function(formdata) {
+    consol.log(formdata)
+  };
 
 }]);

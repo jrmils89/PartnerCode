@@ -1,0 +1,11 @@
+<div class="form-overlay"  ng-show="navCtrl.login === true">
+  <form class="create-session" action="">
+    <input type="text" name="username" placeholder="Username" ng-model="navCtrl.user.name"></br>
+    <input type="text" name="email" placeholder="Email Address" ng-model="navCtrl.user.email"></br>
+    <input type="password" name="password" placeholder="Password" ng-model="navCtrl.user.password"></br>
+    <ul>
+      <li><a href="/" class="form-button" ng-click="navCtrl.signupUser(navCtrl.user)">Login</a></li>
+      <li><a href="/" class="form-button" ng-click="navCtrl.showLogin()">Cancel</a></li>
+    </ul>
+  </form>
+</div>

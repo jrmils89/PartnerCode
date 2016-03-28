@@ -1,7 +1,9 @@
 <nav>
   <ul>
     <li><a href="/" class="button">Home</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.click()">Create New Session</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showSession()">Create New Session</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showSignup()">Signup</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showLogin()">Login</a></li>
   </ul>
 </nav>
 <div class="form-overlay"  ng-show="navCtrl.show === true">
@@ -18,7 +20,10 @@
     </datalist>
     <ul>
       <li><a href="/" class="form-button" ng-click="navCtrl.submit(navCtrl.codesession)">Submit</a></li>
-      <li><a href="/" class="form-button" ng-click="navCtrl.click()">Cancel</a></li>
+      <li><a href="/" class="form-button" ng-click="navCtrl.showSession()">Cancel</a></li>
     </ul>
   </form>
 </div>
+
+<signup-directive></signup-directive>
+<login-directive></login-directive>
