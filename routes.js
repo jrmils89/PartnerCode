@@ -38,13 +38,4 @@ module.exports = function(app,passport) {
       res.json(req.user)
     }
   );
-
-  app.get('/checkLogin', function(req, res) {
-    if (req.isAuthenticated()) {
-      res.json(true)
-    } else {
-      res.json(false);
-    }
-  });
-
 }

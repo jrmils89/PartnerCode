@@ -12,6 +12,16 @@ router.get('/', function(req, res) {
 	}
 });
 
+router.get('/checkLogin', function(req,res) {
+	if (req.isAuthenticated()) {
+		User.findById(req.user.id, function(err, data) {
+			res.json(data);
+		})
+	} else {
+		res.json(false);
+	}
+})
+
 router.post('/', function(req, res) {
   var newUser = new User(req.body);
   newUser.save(function(err,data) {

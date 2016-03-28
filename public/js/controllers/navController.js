@@ -50,7 +50,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
     }).then(
       function(response) {
         $scope.$emit('signup', response.data);
-        this.user = {};
+        self.user = {};
         self.showSignup();
         self.loggedIn = true;
       },
@@ -68,7 +68,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
     }).then(
       function(response) {
         $scope.$emit('login', response.data);
-        this.user = {};
+        self.user = {};
         self.showLogin();
         self.loggedIn = true;
       },
@@ -85,7 +85,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
     }).then(
       function(response) {
         $scope.$emit('login', response.data);
-        this.user = {};
+        self.user = {};
         self.loggedIn = false;
       },
       function(error) {
