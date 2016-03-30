@@ -43,6 +43,8 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   };
 
   this.signupUser = function(formdata) {
+    // Get the location of where the user is making the request from
+    var locationURL = $location.url();
     $http({
       method: "POST",
       url: "/signup",
@@ -53,6 +55,9 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
         self.user = {};
         self.showSignup();
         self.loggedIn = true;
+        // This line is to send the user back to where they try to signup / login
+        // it was redirecting them back to / and this fixes that small bug
+        $location.path(locationURL);
       },
       function(error) {
         console.log(error);
@@ -61,6 +66,8 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   };
 
   this.loginUser = function(formdata) {
+    // Get the location of where the user is making the request from
+    var locationURL = $location.url();
     $http({
       method: "POST",
       url: "/login",
@@ -71,6 +78,9 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
         self.user = {};
         self.showLogin();
         self.loggedIn = true;
+        // This line is to send the user back to where they try to signup / login
+        // it was redirecting them back to / and this fixes that small bug
+        $location.path(locationURL);
       },
       function(error) {
         console.log(error);
