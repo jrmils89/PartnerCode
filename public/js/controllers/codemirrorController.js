@@ -5,7 +5,10 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
 
   this.id = $routeParams.id;
 
-  var socket = io();
+  var pathName = window.location.pathname;
+
+  var socket = io.connect('', {query: 'pathName='+pathName});
+
 
   this.createEditor = function() {
     $http({
@@ -50,6 +53,24 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
         socket.on('event change', function(doc){
           editor.getDoc().setValue(doc[0]);
           editor.getDoc().setCursor(doc[1])
+        });
+
+        socket.on('roomsUpdated', function(value) {
+          self.numberOfConnections = 0;
+          for (var key in value) {
+            if (value[key].urlName == pathName) {
+              self.numberOfConnections += 1;
+            };
+          }
+        });
+
+        socket.on('leftRoom', function(value) {
+          self.numberOfConnections = 0;
+          for (var key in value) {
+            if (value[key].urlName == pathName) {
+              self.numberOfConnections += 1;
+            };
+          }
         });
         //https://codemirror.net/doc/manual.html#setOption
         // myCodeMirror.setOption("mode", "javascript")

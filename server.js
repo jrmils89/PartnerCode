@@ -69,11 +69,18 @@ app.use(function(req, res, next) {
 
 
 io.on('connection', function(socket, req){
-  // var rooms = io.sockets.adapter.rooms;
-  // for (var clientId in rooms) {
-  //   console.log('client: %s', clientId);
-  //   var client_socket = io.sockets.connected[clientId];
-  // }
+
+  socket.on('disconnect', function(){
+    var rooms = io.sockets.adapter.rooms;
+    io.emit('leftRoom', rooms);
+  });
+
+
+  var rooms = io.sockets.adapter.rooms;
+  rooms[socket.id].urlName = socket.handshake.query.pathName;
+  io.emit('roomsUpdated', rooms);
+
+
   socket.on('change event', function(value) {
     io.emit('event change', value);
   });
