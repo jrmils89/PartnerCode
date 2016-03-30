@@ -3,7 +3,7 @@
 * {
   padding: 0;
   margin: 0 auto;
-  /*font-size: 18px;*/
+  font-size: 18px;
   box-sizing: border-box;
 }
 
@@ -29,7 +29,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 90;
-  height: 4vh;
+  min-height: 4vh;
   background: white;
 }
 nav > ul {
@@ -126,9 +126,7 @@ form > ul > li {
 }
 
 .intro-container {
-  /*This height should subtract -#vh of however big the font size of a.button is */
-  height: 150vh;
-  padding-top: 50vh;
+  height: 100vh;
   width: 100%;
   float: left;
   animation: 0.5s fade-in;
@@ -142,6 +140,34 @@ form > ul > li {
   background-color: white;
 }
 
+.main-image {
+  width: 100%;
+  height: 100%;
+  background: url('../files/typing.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.intro-container .content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  width: 75%;
+  text-align: center;
+  font-size: 2em;
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 1em;
+  margin-top: 15%;
+
+}
 
 .hidden {
   width: 100%;
@@ -161,4 +187,10 @@ form > ul > li {
   0% {opacity: 1; height: 50vh}
   10% {opacity: .8}
   100% {opacity: 0; display: none; height: 0;}
+}
+
+@media (max-width: 600px) {
+  * {
+    font-size: 12px;
+  }
 }

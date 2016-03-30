@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li><a href="/" class="button">Home</a></li>
-    <li><a href="" class="button" ng-click="navCtrl.showSession()">Create New Session</a></li>
+    <li><a href="" class="button" ng-click="navCtrl.showSession()">New Session</a></li>
     <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showSignup()" >Signup</a></li>
     <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showLogin()" >Login</a></li>
     <li ng-if="appCtrl.loggedIn === true"><a href="" class="button" ng-click="navCtrl.logoutUser()" >Logout</a></li>
