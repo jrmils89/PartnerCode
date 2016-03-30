@@ -63,6 +63,7 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
         });
 
         socket.on('changed mode', function(value) {
+          document.getElementById("session-language").value = value;
           self.session.language = value;
           editor.setOption("mode", value);
         });
@@ -84,8 +85,7 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
             };
           }
         });
-        //https://codemirror.net/doc/manual.html#setOption
-        // myCodeMirror.setOption("mode", "javascript")
+
         this.callback = function() {
           thisDoc = editor.getDoc().getValue();
           $http({
