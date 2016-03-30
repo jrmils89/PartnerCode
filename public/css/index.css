@@ -127,6 +127,10 @@ form > input, select {
   color: #CE5D5D;
 }
 
+#session-language, #session-theme {
+  color: black;
+}
+
 form > ul > li {
   list-style: none;
 }

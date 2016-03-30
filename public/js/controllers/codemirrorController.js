@@ -48,11 +48,23 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
           socket.emit('change event', [value, cursor]);
         }
 
+        document.getElementById("session-theme").onchange = function() {
+          editor.setOption("theme", self.session.theme);
+        };
 
-        // });
+        document.getElementById("session-language").onchange = function() {
+          editor.setOption("mode", self.session.language);
+          socket.emit('mode change', self.session.language);
+        };
+
         socket.on('event change', function(doc){
           editor.getDoc().setValue(doc[0]);
           editor.getDoc().setCursor(doc[1])
+        });
+
+        socket.on('changed mode', function(value) {
+          self.session.language = value;
+          editor.setOption("mode", value);
         });
 
         socket.on('roomsUpdated', function(value) {

@@ -84,6 +84,10 @@ io.on('connection', function(socket, req){
   socket.on('change event', function(value) {
     io.emit('event change', value);
   });
+
+  socket.on('mode change', function(value) {
+    io.emit('changed mode', value);
+  });
 });
 
 // ===============================================================================
