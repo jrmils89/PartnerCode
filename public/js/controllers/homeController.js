@@ -9,7 +9,7 @@ app.controller("homeController", [function() {
 
   if( !/Mobi/i.test(navigator.userAgent) ) {
     window.addEventListener("scroll", function(e) {
-      if (window.scrollY >= 380) {
+      if (window.scrollY >= 380 && document.getElementsByClassName("intro-container").length > 1) {
         document.getElementsByClassName("intro-container")[0].className = document.getElementsByClassName("intro-container")[0].className.replace(/(intro\-container)/gi,'hidden');
         window.scroll(0,10);
       }
