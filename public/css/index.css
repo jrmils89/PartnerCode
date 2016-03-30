@@ -3,7 +3,7 @@
 * {
   padding: 0;
   margin: 0 auto;
-  font-size: 18px;
+  /*font-size: 18px;*/
   box-sizing: border-box;
 }
 
@@ -34,7 +34,7 @@ nav {
 }
 nav > ul {
   list-style: none;
-  height: 100%;
+  min-height: 4vh;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -43,7 +43,7 @@ nav > ul > li {
   display: inline-block;
   width: 25%;
   text-align: center;
-  height: 100%;
+  min-height: 4vh;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -63,13 +63,13 @@ a.button {
   width: 100%;
   font-size: 1em;
   text-decoration: none;
-  height: 100%;
+  min-height: 4vh;
   border: solid 1px black;
 }
 
 .code-container {
   /*This height should subtract -#vh of however big the font size of a.button is */
-  height: calc(100vh - 3vh);
+  height: calc(100vh - 4vh);
   width: 75%;
   float: left;
 }
@@ -175,6 +175,22 @@ h1 {
   display: block;
   background-color: #CE5D5D;
   animation: 0.7s fade-out forwards;
+}
+
+.side-bar {
+  background: #CE5D5D;
+  height: calc(100vh - 4vh);
+  float: right;
+  width: 25%;
+  padding: .2em;
+  padding-top: .4em;
+}
+
+.side-bar h2 {
+  text-align: center;
+  font-size: 1.4em;
+  border: solid 1px black;
+  border-radius: 5px;
 }
 
 @keyframes fade-in {
