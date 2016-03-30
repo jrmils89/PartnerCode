@@ -159,6 +159,7 @@ form > ul > li {
   -o-background-size: cover;
   background-size: cover;
   opacity: 0.4;
+  text-align: center;
 }
 
 .intro-container .content {
@@ -178,7 +179,21 @@ h1 {
   margin-top: 20%;
   color: white;
   font-weight: 300;
+}
 
+video {
+  width: 50%;
+  text-align: center;
+  margin-top: 5%;
+  color: white;
+}
+
+.title {
+  color: white;
+  font-weight: 300;
+  border: solid 1px white;
+  width: 50%;
+  border-radius: 5px;
 }
 
 .hidden {
