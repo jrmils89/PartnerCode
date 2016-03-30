@@ -16,11 +16,17 @@ body {
   background-color: #fafafa;
   margin-bottom: .2em;
   font-family: 'Open Sans', sans-serif;
-  min-height: 100%;
+  height: 100%;
+  background: black;
 }
 
 .body-container {
-  margin-top: 4vh;
+  height: 100%;
+  transform: translateY(3%);
+}
+
+.layout {
+  height: 100%;
 }
 
 nav {
@@ -29,12 +35,12 @@ nav {
   top: 0;
   left: 0;
   z-index: 90;
-  min-height: 4vh;
+  min-height: 3%;
   background: white;
 }
 nav > ul {
   list-style: none;
-  min-height: 4vh;
+  min-height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -43,7 +49,7 @@ nav > ul > li {
   display: inline-block;
   width: 25%;
   text-align: center;
-  min-height: 4vh;
+  min-height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -63,13 +69,13 @@ a.button {
   width: 100%;
   font-size: 1em;
   text-decoration: none;
-  min-height: 4vh;
+  min-height: 100%;
   border: solid 1px black;
 }
 
 .code-container {
   /*This height should subtract -#vh of however big the font size of a.button is */
-  height: calc(100vh - 4vh);
+  height: 100%;
   width: 75%;
   float: left;
 }
@@ -126,7 +132,7 @@ form > ul > li {
 }
 
 .intro-container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   float: left;
   animation: 0.5s fade-in;
@@ -162,10 +168,12 @@ h1 {
   width: 75%;
   text-align: center;
   font-size: 2em;
-  border: solid 1px black;
+  border: solid 1px white;
   border-radius: 5px;
   padding: 1em;
   margin-top: 15%;
+  color: white;
+  font-weight: 300;
 
 }
 
@@ -179,7 +187,7 @@ h1 {
 
 .side-bar {
   background: #CE5D5D;
-  height: calc(100vh - 4vh);
+  height: 100%;
   float: right;
   width: 25%;
   padding: .2em;
