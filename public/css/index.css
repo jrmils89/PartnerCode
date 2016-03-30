@@ -35,7 +35,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 90;
-  height: 4%;
+  min-height: 4%;
   background: white;
 }
 nav > ul {
@@ -228,8 +228,8 @@ h1 {
 }
 
 @keyframes fade-out {
-  0% {opacity: 1; height: 50vh}
-  10% {opacity: .8}
+  0% {opacity: 1;}
+  10% {opacity: .8; height: 50%;}
   100% {opacity: 0; display: none; height: 0;}
 }
 
