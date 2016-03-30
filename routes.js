@@ -9,9 +9,9 @@ module.exports = function(app,passport) {
   app.use('/', staticController);
 
   app.get('/', function(req, res) {
-    res.clearCookie('redirectPartnerCode');
+    res.clearCookie('redirectPairCoder');
     var url = req.session.valid || 'null';
-    res.cookie('redirectPartnerCode', url);
+    res.cookie('redirectPairCoder', url);
     req.session.valid = null;
     res.sendFile(__dirname + '/public/home.html');
   });

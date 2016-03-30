@@ -14,7 +14,7 @@ var cookieParser   = require('cookie-parser');
 var passport       = require('passport');
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/partnercode';
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/paircoder';
 
 
 // ===============================================================================
