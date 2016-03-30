@@ -16,13 +16,13 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
       url: "/api/v1/coding/"+self.id,
     }).then(
       function(response){
-        data = response.data;
-        var intialData = data.typedData;
+        self.session = response.data;
+        var intialData = self.session.typedData;
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           tabSize: 2,
-          mode: data.language.toLowerCase(),
-          theme: data.theme.toLowerCase()
+          mode: self.session.language.toLowerCase(),
+          theme: self.session.theme.toLowerCase()
         });
 
         if (intialData) {
