@@ -132,7 +132,7 @@ form > ul > li {
 }
 
 .intro-container {
-  height: 100%;
+  height: 120%;
   width: 100%;
   float: left;
   animation: 0.5s fade-in;
@@ -171,7 +171,7 @@ h1 {
   border: solid 1px white;
   border-radius: 5px;
   padding: 1em;
-  margin-top: 15%;
+  margin-top: 20%;
   color: white;
   font-weight: 300;
 
