@@ -25,6 +25,10 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
   this.codesession = {};
   this.user = {};
 
+  this.codesession.language = 'javascript';
+  this.codesession.theme = 'monokai';
+
+
   this.submit = function(formdata) {
     $http({
       method: "POST",
