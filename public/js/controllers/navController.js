@@ -24,6 +24,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
 
   this.codesession = {};
   this.user = {};
+  this.userId = null;
 
   this.codesession.language = 'javascript';
   this.codesession.theme = 'monokai';
@@ -57,6 +58,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
       function(response) {
         $scope.$emit('signup', response.data);
         self.user = {};
+        self.userId = response.data._id;
         self.showSignup();
         self.loggedIn = true;
         // This line is to send the user back to where they try to signup / login
@@ -80,6 +82,8 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
       function(response) {
         $scope.$emit('login', response.data);
         self.user = {};
+        self.userId = response.data._id;
+        console.log(response.data);
         self.showLogin();
         self.loggedIn = true;
         // This line is to send the user back to where they try to signup / login
@@ -100,12 +104,19 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
       function(response) {
         $scope.$emit('logout', response.data);
         self.user = {};
+        self.userId = null;
         self.loggedIn = false;
       },
       function(error) {
         console.log(error);
       }
     );
+  };
+
+
+
+  this.authorizeGithub = function() {
+    location.href = "https://github.com/login/oauth/authorize?client_id=4ed007d2a494af25d518&redirect_uri=http://127.0.0.1:3000/api/v1/users/github/56fd89f430319c2b748bd46f";
   };
 
 }]);

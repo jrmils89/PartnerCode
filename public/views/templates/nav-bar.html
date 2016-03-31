@@ -5,6 +5,7 @@
     <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showSignup()" >Signup</a></li>
     <li ng-if="appCtrl.loggedIn === false"><a href="" class="button" ng-click="navCtrl.showLogin()" >Login</a></li>
     <li ng-if="appCtrl.loggedIn === true"><a href="" class="button" ng-click="navCtrl.logoutUser()" >Logout</a></li>
+    <li ng-if="appCtrl.loggedIn === true"><a href="" class="button" ng-click="navCtrl.authorizeGithub()" >Add Github</a></li>
   </ul>
 </nav>
 <div class="form-overlay"  ng-show="navCtrl.show === true">

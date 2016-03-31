@@ -29,6 +29,14 @@ router.post('/', function(req, res) {
   })
 })
 
+router.get('/github/:id', function(req,res) {
+		// { code: 'cb44ca2b0e4c304e7ac5' }
+		// req.params.id = user id
+		console.log(req.query);
+		res.json("hello");
+});
+
+
 // SHOW
 router.get('/:id', function(req, res) {
 	if (res.locals.login) {
@@ -46,6 +54,7 @@ router.delete('/:id', function(req, res) {
 		res.json(data);
 	})
 })
+
 
 
 module.exports = router;
