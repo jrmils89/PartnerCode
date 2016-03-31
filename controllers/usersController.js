@@ -29,9 +29,9 @@ router.post('/', function(req, res) {
   })
 })
 
-router.get('/github/:id', function(req,res) {
-		// { code: 'cb44ca2b0e4c304e7ac5' }
-		// req.params.id = user id
+router.get('/github', function(req,res) {
+	// { code: '92ac8627f69749597932',
+	//   user_id: '56fd89f430319c2b748bd46f' }
 		console.log(req.query);
 		res.json("hello");
 });

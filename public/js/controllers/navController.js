@@ -116,7 +116,7 @@ app.controller("navController", ["$http","$scope","$location", function($http,$s
 
 
   this.authorizeGithub = function() {
-    location.href = "https://github.com/login/oauth/authorize?client_id=4ed007d2a494af25d518&redirect_uri=http://127.0.0.1:3000/api/v1/users/github/56fd89f430319c2b748bd46f";
+    location.href = "https://github.com/login/oauth/authorize?client_id=4ed007d2a494af25d518&redirect_uri=http://127.0.0.1:3000/api/v1/users/github?user_id=56fd89f430319c2b748bd46f";
   };
 
 }]);
