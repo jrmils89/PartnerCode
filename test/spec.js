@@ -2,6 +2,7 @@ var request = require('supertest');
 var mongoose = require('mongoose');
 var should = require('should');
 var db = mongoose.connection;
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/paircoder';
 
 
 describe('loading server', function () {
@@ -72,5 +73,47 @@ describe('creating user', function () {
       done();
     });
   });
+});
 
+
+describe('creating user', function () {
+
+  var User = require('../models/user');
+  var testUser;
+  var testUserId;
+
+  beforeEach(function () {
+    mongoose.connect(mongoUri);
+  });
+  afterEach(function(done) {
+    mongoose.connection.close(done);
+  });
+  it('should create a user', function(done) {
+    testUser = new User();
+    testUser.email = "testemail123@yahoo.com";
+    testUser.password = testUser.generateHash('testpassword1234');
+    testUser.should.have.property('email', 'testemail123@yahoo.com');
+    testUser.validPassword('testpassword1234').should.be.equal(true);
+    done();
+  });
+
+  it('should save a user', function(done) {
+    testUser = new User();
+    testUser.email = "testemail123@yahoo.com";
+    testUser.password = testUser.generateHash('testpassword1234');
+    testUser.save(function(err, data) {
+      if (err) done(err);
+      testUserId = data._id;
+      data.should.have.property('email', 'testemail123@yahoo.com');
+      done();
+    });
+  });
+
+  it('should remove the test user', function(done) {
+    User.findByIdAndRemove(testUserId, function(err, data) {
+      if (err) done(err);
+      data.should.have.property('email', 'testemail123@yahoo.com');
+  		done();
+  	});
+  });
 });
