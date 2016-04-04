@@ -35,7 +35,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 90;
-  min-height: 4%;
+  height: 4%;
   background: white;
 }
 nav > ul {
