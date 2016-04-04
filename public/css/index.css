@@ -3,7 +3,6 @@
 * {
   padding: 0;
   margin: 0 auto;
-  /*font-size: 18px;*/
   box-sizing: border-box;
 }
 
@@ -22,7 +21,7 @@ body {
 
 .body-container {
   height: 100%;
-  transform: translateY(4%);
+  transform: translateY(1.2em);
 }
 
 .layout {
@@ -35,12 +34,10 @@ nav {
   top: 0;
   left: 0;
   z-index: 90;
-  height: 4%;
   background: white;
 }
 nav > ul {
   list-style: none;
-  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -49,7 +46,6 @@ nav > ul > li {
   display: inline-block;
   width: 25%;
   text-align: center;
-  height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -69,12 +65,10 @@ a.button {
   width: 100%;
   font-size: 1em;
   text-decoration: none;
-  height: 100%;
   border: solid 1px black;
 }
 
 .code-container {
-  /*This height should subtract -#vh of however big the font size of a.button is */
   height: 100%;
   width: 75%;
   float: left;
