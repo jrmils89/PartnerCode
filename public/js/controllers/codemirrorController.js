@@ -5,9 +5,12 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
 
   this.id = $routeParams.id;
 
+  this.charPerMinuteCount = null;
+
   var pathName = window.location.pathname;
 
   var socket = io.connect('', {query: 'pathName='+pathName});
+
 
 
   this.createEditor = function() {
@@ -86,14 +89,24 @@ app.controller("codemirrorController", ["$http","$scope","$routeParams", functio
           }
         });
 
+        var calculateCharactersPerMinute = function(data) {
+          var lastUpdated = new Date(data.dateUpdated);
+          var created = new Date(data.dateCreated);
+          var text = editor.getDoc().getValue();
+          var minutes = (lastUpdated - created) / 1000 / 60;
+          self.charPerMinuteCount = (text.length / minutes);
+        }
+
+
+
         this.callback = function() {
           thisDoc = editor.getDoc().getValue();
           $http({
             method: "PUT",
             url: "/api/v1/coding/"+self.id,
-            data: {typedData: thisDoc}
+            data: {typedData: thisDoc, dateUpdated: Date.now()}
           }).then(function(response) {
-            return true;
+            calculateCharactersPerMinute(response.data);
           },
           function(error) {
             console.log(error);

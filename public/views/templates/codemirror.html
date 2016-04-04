@@ -55,5 +55,6 @@
   </select></br>
   <p>Participants: {{codemirrorCtrl.numberOfConnections}}</p>
   <h2 ng-if="codemirrorCtrl.session.name != null">{{codemirrorCtrl.session.name}}</h2>
+  <p>Characters Per Minute Typed: {{codemirrorCtrl.charPerMinuteCount | number:1}}</p>
 
 </div>
